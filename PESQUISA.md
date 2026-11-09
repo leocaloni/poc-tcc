@@ -66,9 +66,11 @@ sequenceDiagram
 
 ## Divergências entre ferramentas de IA
 
-- As duas citaram WebSocket e MQTT, com o FastAPI e o Networking do React Native como leitura para WebSocket.
-- Divergiram em MQTT: o Gemini o apresentou como a melhor escolha e o padrão da indústria automotiva/IoT; o ChatGPT o considerou complexidade desnecessária para um único backend e um app, recomendando WebSocket.
-- O que confirmei: a documentação do React Native mostra que o `WebSocket` é suportado, e nosso backend já publica a telemetria em `/ws`, sem broker MQTT. WebSocket atendeu ao problema no aparelho sem infraestrutura nova.
+- As duas citaram WebSocket, SSE e MQTT, e indicaram o FastAPI e o Networking do React Native como leitura para WebSocket.
+- MQTT: o Gemini o destacou como padrão da indústria IoT/automotiva, com a ressalva do broker extra; o ChatGPT o considerou complexidade desnecessária para um único backend e um app.
+- Socket.IO: só o Gemini sugeriu, para ter reconexão automática pronta. O ChatGPT não citou.
+- Autenticação do WebSocket: o Gemini sugeriu enviar o token na primeira mensagem ou na URL; o ChatGPT sugeriu um ticket temporário. Nenhuma das duas serve sem mudar o backend, que só aceita cookie ou `Authorization: Bearer` no handshake.
+- O que confirmei: a documentação do React Native mostra que o `WebSocket` é suportado, e o nosso backend já publica a telemetria em `/ws`, sem broker. No aparelho, o cookie do login foi enviado no handshake, sem biblioteca extra. A reconexão que o Gemini citou como desvantagem foi implementada em poucas linhas no `lib/telemetria.ts`.
 
 ## Resultado e próximos passos no TCC
 
