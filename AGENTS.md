@@ -39,3 +39,20 @@ Docs: https://docs.expo.dev/eas/index.md
 - If `ios/` and `android/` directories do not exist, they are generated (Continuous Native Generation). Never create or edit them by hand — configure native behavior in `app.json` and config plugins.
 - Expo Go only includes its bundled native modules. After adding a library with native code, the app needs a development build: `npx expo run:ios|android` locally, or `eas build --profile development`.
 - Prefer recommended Expo modules over third-party libraries, and check your available skills before adding dependencies. Docs: https://docs.expo.dev/versions/latest/index.md
+
+## Convenções deste projeto
+
+- Não altere arquivos fora do escopo pedido. Explique cada alteração.
+- Componentes ficam em `components/`, um arquivo por componente.
+- Estado nunca é modificado no lugar: sempre gere um novo valor.
+- Valores que podem ser calculados a partir do estado não viram estado.
+- Antes de usar um pacote, confirme na documentação se ele funciona no Expo Go.
+
+## Contexto desta prova de conceito
+
+- TCC: ODB2 + MS41 Telemetry, sistema que lê a ECU Siemens MS41 de um BMW E36 e mostra e grava os parâmetros do motor em um app desktop (FastAPI + PostgreSQL + React).
+- Problema: a telemetria ao vivo só aparece na tela do notebook; a US01 pede acompanhar o carro em tempo real.
+- Tecnologia investigada: trilha de Consumo de API, com `fetch` para o login e a API `WebSocket` do React Native para o endpoint `/ws`.
+- Uma tela só, em `App.tsx`: o usuário informa servidor, e-mail e senha e vê RPM, velocidade, temperatura e bateria ao vivo.
+- Não usar Expo Router, a menos que a tecnologia investigada seja a navegação.
+- Fora de escopo: gravação de sessões, cadastro, design final e tudo que não demonstre a pergunta.
