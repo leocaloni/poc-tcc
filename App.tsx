@@ -52,7 +52,7 @@ export default function App() {
       <View style={estilos.grade}>
         <Metrica rotulo="RPM" valor={valorExibido(amostra, 'rpm')} unidade="rpm" />
         <Metrica rotulo="Velocidade" valor={valorExibido(amostra, 'vss')} unidade="km/h" />
-        <Metrica rotulo="Temperatura" valor={valorExibido(amostra, 'ect')} unidade="°C" />
+        <Metrica rotulo="Temperatura" valor={valorExibido(amostra, 'ect', 1)} unidade="°C" />
         <Metrica rotulo="Bateria" valor={valorExibido(amostra, 'vbat', 1)} unidade="V" />
       </View>
     </View>
